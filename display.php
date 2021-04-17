@@ -14,6 +14,8 @@ if (isset(($_POST['nextback']))) {
 }
 
 $currentMap1 = $_SESSION['currentMap'];
+
+//testtt
 ?>
 
 <html>
