@@ -12,7 +12,7 @@ if (isset(($_POST['nextback']))) {
         $_SESSION['currentMap']->setMapID(-1);
     }
 }
-//test branch
+//test branch 2
 $currentMap1 = $_SESSION['currentMap'];
 ?>
 
