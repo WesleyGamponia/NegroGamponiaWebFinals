@@ -183,7 +183,7 @@ class DBLibrary implements IDBFunctions{
         for($i=0;$i<=count($fieldList)-1;$i++){
             $this->sql .= "$fieldList[$i]='$valueList[$i]',";
         }
-        $this->sql .= "$fieldList[5]='$valueList[5]' ";
+        $this->sql .= "$fieldList[1]='$valueList[1]' ";
         $dbStatement = $this->db->prepare($this->sql);
         $dbStatement->execute();
         return $this;

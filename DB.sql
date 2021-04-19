@@ -16,8 +16,9 @@ CREATE TABLE `tile` (
 );
 create table `save`(
 	saveID int PRIMARY KEY auto_increment,
+    mapID int,
     tileID int
 );
 
-insert into save (tileID)values(1);
-select * from map;
+insert into save (mapID,tileID)values(1,1);
+select * from tile;
