@@ -38,7 +38,6 @@ class Movement
                 $this->holder = $this->tileID - $this->minus + 1;
 
                 if ($this->holder - 1 % 6 != 0 && $tiles[$this->holder - 1]['passable'] == 1) {
-                    echo $tiles[$this->holder - 1]['passable'];
                     $_SESSION['player']->moveTileID(1);
                 }
 
