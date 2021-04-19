@@ -18,6 +18,7 @@ if (isset(($_POST['nextback']))) {
         $_SESSION['currentMap']->setMapID(-1);
     }
 }
+
 $location = $db2->select()->from('save')->where('saveID', '=', $_SESSION['currentSave'])->get();
 
 $_SESSION['player']->setMapID($location['mapID']);
@@ -28,7 +29,6 @@ if (isset(($_POST['movement']))) {
     $valueList = [$_SESSION['player']->getTileID(), $_SESSION['player']->getMapID()];
     $db3->table('save')->update($fieldList,$valueList)->where("saveID", "=", 1)->getAll();
 }
-
 
 ?>
 
