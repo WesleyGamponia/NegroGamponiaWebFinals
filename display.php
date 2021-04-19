@@ -4,6 +4,7 @@ require_once 'db/DBLibrary.php';
 require_once 'class/map.php';
 session_start();
 $db = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
+$_SESSION['currentSave']=1;
 $_SESSION['currentMap'] = new Maps();
 if (isset(($_POST['nextback']))) {
     if ($_POST['nextback'] == 'next') {
@@ -15,7 +16,7 @@ if (isset(($_POST['nextback']))) {
 
 $currentMap1 = $_SESSION['currentMap'];
 
-//testtt
+//gamponia branch
 ?>
 
 <html>

@@ -14,5 +14,10 @@ CREATE TABLE `tile` (
   `encounter` int,
   `imagePath` varchar(255)
 );
+create table `save`(
+	saveID int PRIMARY KEY auto_increment,
+    tileID int
+);
 
+insert into save (tileID)values(1);
 select * from map;
