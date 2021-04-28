@@ -36,6 +36,7 @@ class Movement
                 break;
             case "right":
                 $this->holder = $this->tileID - $this->minus + 1;
+
                 if ($this->holder < 37){
                     if ($this->holder - 1 % 6 != 0 && $tiles[$this->holder - 1]['passable'] == 1) {
                         $_SESSION['player']->moveTileID(1);
@@ -49,6 +50,7 @@ class Movement
                             $_SESSION['currentMap']->setMapID(2);
                         break;
                     }
+
                 }
                 break;
         }
