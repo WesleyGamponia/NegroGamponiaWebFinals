@@ -11,8 +11,10 @@ $db3 = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 if (!isset($_SESSION['currentSave']))
     $_SESSION['currentSave'] = 1;
 
-$_SESSION['currentMap'] = new Maps();
-$_SESSION['player'] = new Movement();
+if (!isset($_SESSION['currentMap']))
+    $_SESSION['currentMap'] = new Maps();
+if (!isset($_SESSION['player']))
+    $_SESSION['player'] = new Movement();
 if (isset(($_POST['nextback']))) {
     if ($_POST['nextback'] == 'next') {
         $_SESSION['currentMap']->setMapID(1);
@@ -29,7 +31,7 @@ if (isset(($_POST['movement']))) {
     $_SESSION['player']->move($_POST['movement'], $_SESSION['tiles']);
     $fieldList = ["tileID", "mapID"];
     $valueList = [$_SESSION['player']->getTileID(), $_SESSION['player']->getMapID()];
-    $db3->table('save')->update($fieldList,$valueList)->where("saveID", "=", $_SESSION['currentSave'])->getAll();
+    $db3->table('save')->update($fieldList, $valueList)->where("saveID", "=", $_SESSION['currentSave'])->getAll();
 }
 
 ?>
@@ -71,19 +73,19 @@ if (isset(($_POST['movement']))) {
     <div class='controls'>
         <h2>CONTROLS</h2>
         <form action="display.php" method="post">
-        <div class="card-body">
-            <button type="submit" name="movement" class="btn btn-outline-primary btn-lg btn-block" value="up">Up</button> 
-            <button type="submit" name="movement" class="btn btn-outline-success btn-lg btn-block" value="left">Left</button> 
-            <button type="submit" name="movement" class="btn btn-outline-danger btn-lg btn-block" value="right">Right</button> 
-            <button type="submit" name="movement" class="btn btn-outline-secondary btn-lg btn-block" value="down">Down</button> 
+            <div class="card-body">
+                <button type="submit" name="movement" class="btn btn-outline-primary btn-lg btn-block" value="up">Up</button>
+                <button type="submit" name="movement" class="btn btn-outline-success btn-lg btn-block" value="left">Left</button>
+                <button type="submit" name="movement" class="btn btn-outline-danger btn-lg btn-block" value="right">Right</button>
+                <button type="submit" name="movement" class="btn btn-outline-secondary btn-lg btn-block" value="down">Down</button>
         </form>
     </div>
     <div class="nextback">
         <form action="display.php" method="post">
-        <div class="card-body">
-            <input type="submit" class="btn btn-warning" name="nextback" value="back">
-            <input type="submit" class="btn btn-info" name="nextback" value="next">
-        </div>
+            <div class="card-body">
+                <input type="submit" class="btn btn-warning" name="nextback" value="back">
+                <input type="submit" class="btn btn-info" name="nextback" value="next">
+            </div>
         </form>
     </div>
 
