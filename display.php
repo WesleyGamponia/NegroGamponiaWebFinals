@@ -7,8 +7,10 @@ session_start();
 $db = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 $db2 = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 $db3 = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
+
 if (!isset($_SESSION['currentSave']))
     $_SESSION['currentSave'] = 1;
+
 $_SESSION['currentMap'] = new Maps();
 $_SESSION['player'] = new Movement();
 if (isset(($_POST['nextback']))) {
@@ -27,7 +29,7 @@ if (isset(($_POST['movement']))) {
     $_SESSION['player']->move($_POST['movement'], $_SESSION['tiles']);
     $fieldList = ["tileID", "mapID"];
     $valueList = [$_SESSION['player']->getTileID(), $_SESSION['player']->getMapID()];
-    $db3->table('save')->update($fieldList,$valueList)->where("saveID", "=", 1)->getAll();
+    $db3->table('save')->update($fieldList,$valueList)->where("saveID", "=", $_SESSION['currentSave'])->getAll();
 }
 
 ?>
@@ -35,40 +37,25 @@ if (isset(($_POST['movement']))) {
 <html>
 
 <head>
-    <style>
-        .nextback {
-            width: 50%;
-            height: 15%;
-            float: left;
-            margin: auto;
-        }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Play</title>
 
-        .mapContainer {
-            float: left;
-            margin: auto;
-            width: 900px;
-            height: 900px;
-        }
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
-        .controls {
-            float: left;
-            width: 200;
-            height: 200;
-            border: solid;
-            margin: auto
-        }
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
-        .mapContainer .tile {
-            float: left;
-            width: 150px;
-            height: 150px;
-        }
-
-        .sprite {
-            width: 150px;
-            height: 150px;
-        }
-    </style>
+    <!-- Main CSS-->
+    <link href="css/style.css" rel="stylesheet" media="all">
 </head>
 
 <body>
@@ -79,23 +66,24 @@ if (isset(($_POST['movement']))) {
         $_SESSION['tiles'] = $db->select()->from('tile')->where('mapID', '=', $_SESSION['currentMap']->getMapID())->getAll();
 
         echo $_SESSION['currentMap']->displayMap($_SESSION['tiles'], $_SESSION['player']->getTileID(), $_SESSION['player']->getMapID());
-
-
-
         ?>
     </div>
     <div class='controls'>
+        <h2>CONTROLS</h2>
         <form action="display.php" method="post">
-            <input type="submit" name="movement" value="up">
-            <input type="submit" name="movement" value="down">
-            <input type="submit" name="movement" value="left">
-            <input type="submit" name="movement" value="right">
+        <div class="card-body">
+            <button type="submit" name="movement" class="btn btn-outline-primary btn-lg btn-block" value="up">Up</button> 
+            <button type="submit" name="movement" class="btn btn-outline-success btn-lg btn-block" value="left">Left</button> 
+            <button type="submit" name="movement" class="btn btn-outline-danger btn-lg btn-block" value="right">Right</button> 
+            <button type="submit" name="movement" class="btn btn-outline-secondary btn-lg btn-block" value="down">Down</button> 
         </form>
     </div>
     <div class="nextback">
         <form action="display.php" method="post">
-            <input type="submit" name="nextback" value="back">
-            <input type="submit" name="nextback" value="next">
+        <div class="card-body">
+            <input type="submit" class="btn btn-warning" name="nextback" value="back">
+            <input type="submit" class="btn btn-info" name="nextback" value="next">
+        </div>
         </form>
     </div>
 

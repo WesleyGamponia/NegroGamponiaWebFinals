@@ -36,18 +36,25 @@ class Movement
                 break;
             case "right":
                 $this->holder = $this->tileID - $this->minus + 1;
-
-                if ($this->holder - 1 % 6 != 0 && $tiles[$this->holder - 1]['passable'] == 1) {
-                    echo $tiles[$this->holder - 1]['passable'];
-                    $_SESSION['player']->moveTileID(1);
+                if ($this->holder < 37){
+                    if ($this->holder - 1 % 6 != 0 && $tiles[$this->holder - 1]['passable'] == 1) {
+                        $_SESSION['player']->moveTileID(1);
+                    }
                 }
-
+                else {
+                    switch ($_SESSION['player']->getMapID()){
+                        case 1: 
+                            $_SESSION['player']->setMapID(2);
+                            $_SESSION['player']->setTileID(43);
+                            $_SESSION['currentMap']->setMapID(2);
+                        break;
+                    }
+                }
                 break;
         }
     }
     public function setMapID(int $mapID)
     {
-
         $this->mapID = $mapID;
     }
     public function getMapID()
