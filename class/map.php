@@ -9,7 +9,7 @@ class Maps
     private $maxMap = 2;
     public function displayMap(array $tiles, int $tileID, int $mapID)
     {
-        $this->echo ="";
+        $this->echo = "";
         foreach ($tiles as $tile) {
             $this->echo .= "<div class='tile' style='";
             $this->echo .= "background-image: url(\"";
@@ -31,12 +31,11 @@ class Maps
     }
     public function setMapID(int $id)
     {
-     
+
         $this->mapID += $id;
         if ($this->mapID == 0)
             $this->mapID = 1;
         if ($this->mapID > $this->maxMap)
             $this->mapID = $this->maxMap;
     }
-    
 }
