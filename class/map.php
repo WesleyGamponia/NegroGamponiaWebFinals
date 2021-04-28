@@ -16,7 +16,7 @@ class Maps
             $this->echo .= $tile['imagePath'];
             $this->echo .= "\");";
             $this->echo .= "'>";
-            if ($this->mapID == $mapID && $tile['tileID'] == $tileID) {
+            if ($tile['tileID'] == $tileID) {
                 $this->echo .= "<img class='sprite' src=\"img/sprite/sprite.gif\">";
             }
             $this->echo .= "</div>";
@@ -31,6 +31,7 @@ class Maps
     }
     public function setMapID(int $id)
     {
+     
         $this->mapID += $id;
         if ($this->mapID == 0)
             $this->mapID = 1;
