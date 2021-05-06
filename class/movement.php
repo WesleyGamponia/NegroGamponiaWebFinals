@@ -22,7 +22,7 @@ class Movement
                 break;
             case "down":
                 $this->holder = $this->tileID - $this->minus + 6;
-                if ($this->holder < 36 && $tiles[$this->holder - 1]['passable'] == 1) {
+                if ($this->holder < 37 && $tiles[$this->holder - 1]['passable'] == 1) {
 
                     $_SESSION['player']->moveTileID(6);
                 }
@@ -36,9 +36,9 @@ class Movement
                 break;
             case "right":
                 $this->holder = $this->tileID - $this->minus + 1;
-
+                
                 if ($this->holder < 37){
-                    if ($this->holder - 1 % 6 != 0 && $tiles[$this->holder - 1]['passable'] == 1) {
+                    if ($this->holder  % 6 != 1 && $tiles[$this->holder - 1]['passable'] == 1) {
                         $_SESSION['player']->moveTileID(1);
                     }
                 }
