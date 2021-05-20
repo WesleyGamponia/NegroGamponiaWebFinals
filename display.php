@@ -10,6 +10,8 @@ $db3 = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 
 if (!isset($_SESSION['currentSave']))
     $_SESSION['currentSave'] = 0;
+if (!isset($_SESSION['fleeState']))
+    $_SESSION['fleeState'] = 0;
 
 if (!isset($_SESSION['currentMap']))
     $_SESSION['currentMap'] = new Maps();
@@ -22,7 +24,8 @@ if (isset(($_POST['nextback']))) {
         $_SESSION['currentMap']->setMapID(-1);
     }
 }
-
+if(isset($_POST['Flee']))
+    $_SESSION['fleeState'] = 1;
 $location = $db2->select()->from('save')->where('saveID', '=', $_SESSION['currentSave'])->get();
 
 $_SESSION['player']->setMapID($location['mapID']);

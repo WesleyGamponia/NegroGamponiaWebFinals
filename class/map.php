@@ -8,6 +8,7 @@ class Maps
     private $echo;
     public function displayMap(array $tiles, int $tileID)
     {
+
         $this->echo = "";
         foreach ($tiles as $tile) {
             $this->echo .= "<div class='tile' style='";
@@ -16,17 +17,15 @@ class Maps
             $this->echo .= "\");";
             $this->echo .= "'>";
             if ($tile['tileID'] == $tileID) {
-                if($tile['encounter']==1){
-                    header("Location:http://localhost:8000/NegroGamponiaWeb/encounterDisplay.php");
-                    $encounter = new Encounter();//
-                    return $encounter->displayEncounter();
+                if ($tile['encounter'] == 1 && $_SESSION['fleeState'] == 0) {
+                    header("Location:http://localhost:8000/NegroGamponiaWebFinals/encounterDisplay.php");
                 }
 
                 $this->echo .= "<img class='sprite' src=\"img/sprite/MC.png\">";
             }
             $this->echo .= "</div>";
         }
-
+        $_SESSION['fleeState'] = 0;
         return $this->echo;
     }
 
