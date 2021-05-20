@@ -1,4 +1,5 @@
 <?php
+require_once 'init.php';
 require_once 'db/IDBFunctions.php';
 require_once 'db/DBLibrary.php';
 require_once 'class/map.php';
@@ -8,8 +9,8 @@ $db = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 $db2 = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 $db3 = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 
-if (!isset($_SESSION['currentSave']))
-    $_SESSION['currentSave'] = 0;
+$_SESSION['encounterTile']=15;
+$_SESSION['currentSave'] = 1;
 if (!isset($_SESSION['fleeState']))
     $_SESSION['fleeState'] = 0;
 
@@ -71,6 +72,11 @@ if (isset(($_POST['movement']))) {
         $_SESSION['tiles'] = $db->select()->from('tile')->where('mapID', '=', $_SESSION['currentMap']->getMapID())->getAll();
         
         echo $_SESSION['currentMap']->displayMap($_SESSION['tiles'], $_SESSION['player']->getTileID());
+        ?>
+    </div>
+    <div>
+        <?php
+            echo "Lives: ".$location['lives'];
         ?>
     </div>
     <div class='controls'>

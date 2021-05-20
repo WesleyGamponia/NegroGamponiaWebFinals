@@ -176,12 +176,12 @@ class DBLibrary implements IDBFunctions{
         $res = [$mapID,$passable,$encounter,$imgPath];
         $dbStatement->execute($res);
     }
-    public function addSave(int $mapID,int $tileID)
+    public function addSave(int $mapID,int $tileID,int $money, int $lives)
     {
-        $this->sql = "INSERT INTO $this->table VALUES(null,?,?);";
+        $this->sql = "INSERT INTO $this->table VALUES(null,?,?,?,?);";
         
         $dbStatement = $this->db->prepare($this->sql);
-        $res = [$mapID,$tileID];
+        $res = [$mapID,$tileID,$money,$lives];
         $dbStatement->execute($res);
     }
     public function update(array $fieldList, array $valueList)

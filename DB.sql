@@ -19,7 +19,7 @@ create table `save`(
     mapID int,
     tileID int,
     money int,
-    health int
+    lives int
 );
 drop table save;
 insert into save (mapID,tileID,money)values(1,1,0);

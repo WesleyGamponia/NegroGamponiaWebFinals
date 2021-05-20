@@ -3,19 +3,28 @@
 class Encounter
 {
     private $userHP = 100;
-    private $userMP = 20;
+    private $userMP = 50;
     private $enemyHP = 100;
     private $echo;
-    public function displayFriendlyEncounter()
+    public function displayFriendlyEncounter(String $bg, int $encounterTile)
     {
-        $this->echo = "ENCOUNTER Friendly";
+        $this->echo = "";
+        $this->echo.="<div class='encounter' style=$bg>";
+        $this->echo.="<div class='User'>";
+        $this->echo.="<img src='img/sprite/MC.png'>";
+        $this->echo.="</div>";
+        $this->echo.="<div class='enemy'>";
+        $this->echo.="<img src='img/sprite/villain";
+        $this->echo.=strval($encounterTile);
+        $this->echo.=".png'>";
+        $this->echo.="</div>";
+        $this->echo.="</div>";
+
         return $this->echo;
     }
-    public function displayHositleEncounter()
-    {
-        $this->echo = "ENCOUNTER Friendly";
-        return $this->echo;
-    }
+    
+
+
     public function displayEnemy(int $mapID, int $tileID)
     {
         echo "<img class='enemySprite' src=\"img/sprite/villain" . $tileID . ".png\">";
@@ -25,13 +34,15 @@ class Encounter
     {
         return $this->userHP;
     }
-    public function reduceUserHP(int $val)
+    public function getEnemyHP()
     {
-
-        $this->userHP -= $val;
-        if ($this->userHP < 0)
-            $this->userHP = 0;
+        return $this->enemyHP;
     }
+    public function getUserMP()
+    {
+        return $this->userMP;
+    }
+         
     public function reduceEnemyHP(int $val)
     {
 
@@ -39,7 +50,36 @@ class Encounter
         if ($this->enemyHP < 0)
             $this->enemyHP = 0;
     }
-    public function enemySkill(){
+    public function userAction(String $val)
+    {
+        switch ($val) {
+            case "physical":
+                $this->enemyHP -= 10;
+                break;
+            case "skill":
+                $this->enemyHP -= 20;
+                $this->userMP -= 15;
+                break;
+            case "eat":
+                $this->userHP += 20;
+                $this->userMP -= 10;
+                break;
+        }
 
+    }
+    public function enemyAction()
+    {
+        switch (rand(1,3)) {
+            case 1:
+                $this->userMP -= 10;
+                break;
+            case 2:
+                $this->userHP -= 15;
+                break;
+            case 3:
+                $this->userHP -= 10;
+                $this->userMP -= 5;
+                break;
+        }
     }
 }
