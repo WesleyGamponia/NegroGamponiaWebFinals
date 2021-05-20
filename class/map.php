@@ -1,13 +1,12 @@
 <?php
 require_once 'db/IDBFunctions.php';
 require_once 'db/DBLibrary.php';
-
+require_once 'class/encounter.php';
 class Maps
 {
     private $mapID = 1;
     private $echo;
-    private $maxMap = 2;
-    public function displayMap(array $tiles, int $tileID, int $mapID)
+    public function displayMap(array $tiles, int $tileID)
     {
         $this->echo = "";
         foreach ($tiles as $tile) {
@@ -17,7 +16,13 @@ class Maps
             $this->echo .= "\");";
             $this->echo .= "'>";
             if ($tile['tileID'] == $tileID) {
-                $this->echo .= "<img class='sprite' src=\"img/sprite/sprite.gif\">";
+                if($tile['encounter']==1){
+                    header("Location:http://localhost:8000/NegroGamponiaWeb/encounterDisplay.php");
+                    $encounter = new Encounter();//
+                    return $encounter->displayEncounter();
+                }
+
+                $this->echo .= "<img class='sprite' src=\"img/sprite/MC.png\">";
             }
             $this->echo .= "</div>";
         }
@@ -35,7 +40,7 @@ class Maps
         $this->mapID += $id;
         if ($this->mapID == 0)
             $this->mapID = 1;
-        if ($this->mapID > $this->maxMap)
-            $this->mapID = $this->maxMap;
+        if ($this->mapID > 4)
+            $this->mapID = 4;
     }
 }

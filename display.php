@@ -9,7 +9,7 @@ $db2 = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 $db3 = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 
 if (!isset($_SESSION['currentSave']))
-    $_SESSION['currentSave'] = 1;
+    $_SESSION['currentSave'] = 0;
 
 if (!isset($_SESSION['currentMap']))
     $_SESSION['currentMap'] = new Maps();
@@ -66,8 +66,8 @@ if (isset(($_POST['movement']))) {
         <?php
 
         $_SESSION['tiles'] = $db->select()->from('tile')->where('mapID', '=', $_SESSION['currentMap']->getMapID())->getAll();
-
-        echo $_SESSION['currentMap']->displayMap($_SESSION['tiles'], $_SESSION['player']->getTileID(), $_SESSION['player']->getMapID());
+        
+        echo $_SESSION['currentMap']->displayMap($_SESSION['tiles'], $_SESSION['player']->getTileID());
         ?>
     </div>
     <div class='controls'>
