@@ -48,8 +48,8 @@ $db->table("tile")->addTile(1,0,0,"img/map1/map1_24.png");
 //ROW 5
 $db->table("tile")->addTile(1,0,0,"img/map1/map1_25.png");
 $db->table("tile")->addTile(1,1,1,"img/map1/map1_26.png");
-$db->table("tile")->addTile(1,0,0,"img/map1/map1_27.png");
-$db->table("tile")->addTile(1,1,0,"img/map1/map1_28.png");
+$db->table("tile")->addTile(1,1,0,"img/map1/map1_27.png");
+$db->table("tile")->addTile(1,0,0,"img/map1/map1_28.png");
 $db->table("tile")->addTile(1,0,0,"img/map1/map1_29.png");
 $db->table("tile")->addTile(1,0,0,"img/map1/map1_30.png");
 
