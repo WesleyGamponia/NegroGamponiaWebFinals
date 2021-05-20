@@ -6,14 +6,19 @@ class Encounter
     private $userMP = 20;
     private $enemyHP = 100;
     private $echo;
-    public function displayEncounter()
+    public function displayFriendlyEncounter()
     {
-        $this->echo = "ENCOUNTER";
+        $this->echo = "ENCOUNTER Friendly";
+        return $this->echo;
+    }
+    public function displayHositleEncounter()
+    {
+        $this->echo = "ENCOUNTER Friendly";
         return $this->echo;
     }
     public function displayEnemy(int $mapID, int $tileID)
     {
-        echo "<img class='enemySprite' src=\"img/sprite/villain" . $tileID . ".gif\">";
+        echo "<img class='enemySprite' src=\"img/sprite/villain" . $tileID . ".png\">";
     }
 
     public function getUserHP()

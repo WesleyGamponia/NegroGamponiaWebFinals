@@ -17,9 +17,11 @@ CREATE TABLE `tile` (
 create table `save`(
 	saveID int PRIMARY KEY auto_increment,
     mapID int,
-    tileID int
+    tileID int,
+    money int,
+    health int
 );
-
-insert into save (mapID,tileID)values(1,1);
+drop table save;
+insert into save (mapID,tileID,money)values(1,1,0);
 select * from save;
 select * from tile;

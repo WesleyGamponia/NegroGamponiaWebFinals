@@ -1,5 +1,6 @@
-<?php
 
+<?php
+require_once  'class/encounter.php';
 $encounter = new Encounter();
 ?>
 <html>
@@ -28,10 +29,10 @@ $encounter = new Encounter();
 
 <body>
 
-    <form action="display.php">
-        <input type="submit" value="Flee">
+    <form action="display.php" method="post">
+        <input type="submit" value="Flee" name = "Flee">
     </form>
-    
+
     <div class="ecounterDiv">
         <div class = "user">
 
