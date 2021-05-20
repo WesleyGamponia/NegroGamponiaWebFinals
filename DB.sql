@@ -21,4 +21,5 @@ create table `save`(
 );
 
 insert into save (mapID,tileID)values(1,1);
+select * from save;
 select * from tile;
