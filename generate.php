@@ -11,7 +11,7 @@ $map2 = ["Map 2"];
 $db->table("map")->addMap($map1);
 $db->table("map")->addMap($map2);
 
-$db->table("save")->addSave(1,1,0,100);
+$db->table("save")->addSave(1,1,0,5);
 //MAP 1 TILES
 //ROW 1
 $db->table("tile")->addTile(1,1,0,"img/map1/map1_01.png");

@@ -2,6 +2,7 @@
 require_once 'db/IDBFunctions.php';
 require_once 'db/DBLibrary.php';
 require_once 'class/encounter.php';
+
 class Maps
 {
     private $mapID = 1;
@@ -18,6 +19,8 @@ class Maps
             $this->echo .= "'>";
             if ($tile['tileID'] == $tileID) {
                 if ($tile['encounter'] == 1 && $_SESSION['fleeState'] == 0) {
+                    $_SESSION['encounterTile']=$tileID;
+                    $_SESSION['encounter'] = new Encounter();
                     header("Location:http://localhost:8000/NegroGamponiaWebFinals/encounterDisplay.php");
                 }
 

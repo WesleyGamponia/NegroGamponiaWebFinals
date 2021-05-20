@@ -14,7 +14,7 @@ interface IDBFunctions {
 
     //  To be Implemented
     public function addMap(array $mapName);
-    public function addSave(int $mapID,int $tileID);
+    public function addSave(int $mapID,int $tileID,int $money, int $lives);
     public function addTile(int $mapID, int $passable, int $encounter, string $imgPath);
     public function update(array $fieldList, array $valueList);
     public function delete();
