@@ -112,93 +112,102 @@ $db->table("tile")->addTile(2,1,0,"img/map2/map2_35.png");
 $db->table("tile")->addTile(2,1,0,"img/map2/map2_36.png");
 //MAP 2 TILES
 
+//MAP 3 TILES
+//ROW 1
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_01.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_02.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_03.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_04.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_05.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_06.png");
 
-//INSERTTTT
-// $res = $db->select()->from('students')->getAll();
-// $db->table("students")->add($row);
-// $db->table("students")->add($row);
-// $db->table("students")->add($row);
-// $db->table("students")->add($row);
-// echo $db->showQuery();
+//ROW 2
+$db->table("tile")->addTile(3,1,0,"img/map3/map3_07.png");
+$db->table("tile")->addTile(3,1,0,"img/map3/map3_08.png");
+$db->table("tile")->addTile(3,1,0,"img/map3/map3_09.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_10.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_11.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_12.png");
 
-// echo $db->showQuery();
-//var_dump($db->select()->from('students')->getAll());
+//ROW 3
+$db->table("tile")->addTile(3,1,0,"img/map3/map3_13.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_14.png");
+$db->table("tile")->addTile(3,1,0,"img/map3/map3_15.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_16.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_17.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_18.png");
 
-// echo "<br><br>";
-// foreach ($res as $row) {
-//     echo $row['studID'];
-//     echo $row['studFname'];
-//     echo $row['studLname'];
-//     echo $row['studCollege'];
-//     echo $row['studProgram'];
-//     echo $row['studYear'];
-//     echo "<br>";
-// }
+//ROW 4
+$db->table("tile")->addTile(3,1,0,"img/map3/map3_19.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_20.png");
+$db->table("tile")->addTile(3,1,1,"img/map3/map3_21.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_22.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_23.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_24.png");
 
-//UPDAAATE
-// $fieldList = ["studID", "studFname", "studLname", "studCollege", "studProgram", "studYear"];
-// $valueList = [2, "Dots", "Josh", 2, 2, 2];
-// $db->table("students")->update($fieldList, $valueList)->where("studID", "=", 2)->getAll();
-// $res = $db->select()->from("students")->getAll();
-// echo $db->showQuery();
-// echo "<br><br>";
+//ROW 5
+$db->table("tile")->addTile(3,1,1,"img/map3/map3_25.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_26.png");
+$db->table("tile")->addTile(3,1,0,"img/map3/map3_27.png");
+$db->table("tile")->addTile(3,1,0,"img/map3/map3_28.png");
+$db->table("tile")->addTile(3,1,0,"img/map3/map3_29.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_30.png");
 
-// foreach ($res as $row) {
-//     echo $row['studID'];
-//     echo $row['studFname'];
-//     echo $row['studLname'];
-//     echo $row['studCollege'];
-//     echo $row['studProgram'];
-//     echo $row['studYear'];
-//     echo "<br>";
-// }
-// $inner=$db->table("students")->select()->from("students")->innerJoin("program","studProgram")->getAll();
-// $left=$db->table("students")->select()->from("students")->leftJoin("program","studProgram")->getAll();
-// $right=$db->table("students")->select()->from("students")->rightJoin("program","studProgram")->getAll();
-// foreach ($inner as $row) {
-//     echo $row['studID'];
-//     echo $row['studFname'];
-//     echo $row['studLname'];
-//     echo $row['studCollege'];
-//     echo $row['studProgram'];
-//     echo $row['studYear'];
-//     echo $row['studProgram'];
-//     echo $row['programName'];
-//     echo "<br>";
-// }
-// foreach ($right as $row) {
-//     echo $row['studID'];
-//     echo $row['studFname'];
-//     echo $row['studLname'];
-//     echo $row['studCollege'];
-//     echo $row['studProgram'];
-//     echo $row['studYear'];
-//     echo $row['programID'];
-//     echo $row['programName'];
-//     echo "<br>";
-// }
-// foreach ($left as $row) {
-//     echo $row['studID'];
-//     echo $row['studFname'];
-//     echo $row['studLname'];
-//     echo $row['studCollege'];
-//     echo $row['studProgram'];
-//     echo $row['studYear'];
-//     echo $row['programID'];
-//     echo $row['programName'];
-//     echo "<br>";
-// }
-//DELEEEETE
-// $db->delete()->from('students')->where('studID', '=', 1)->get();
-// echo "<br><br>";
-// $res = $db->select()->from("students")->getAll();
-// echo $db->showQuery();
-// foreach ($res as $row) {
-//     echo $row['studID'];
-//     echo $row['studFname'];
-//     echo $row['studLname'];
-//     echo $row['studCollege'];
-//     echo $row['studProgram'];
-//     echo $row['studYear'];
-//     echo "<br>";
-// }
+//ROW 6
+$db->table("tile")->addTile(3,1,0,"img/map3/map3_31.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_32.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_33.png");
+$db->table("tile")->addTile(3,0,0,"img/map3/map3_34.png");
+$db->table("tile")->addTile(3,1,1,"img/map3/map3_35.png");
+$db->table("tile")->addTile(3,1,0,"img/map3/map3_36.png");
+//MAP 3 TILES
+
+//MAP 4 TILES
+//ROW 1
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_01.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_02.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_03.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_04.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_05.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_06.png");
+
+//ROW 2
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_07.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_08.png");
+$db->table("tile")->addTile(4,1,1,"img/map4/map4_09.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_10.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_11.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_12.png");
+
+//ROW 3
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_13.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_14.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_15.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_16.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_17.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_18.png");
+
+//ROW 4
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_19.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_20.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_21.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_22.png");
+$db->table("tile")->addTile(4,1,1,"img/map4/map4_23.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_24.png");
+
+//ROW 5
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_25.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_26.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_27.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_28.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_29.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_30.png");
+
+//ROW 6
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_31.png");
+$db->table("tile")->addTile(4,1,1,"img/map4/map4_32.png");
+$db->table("tile")->addTile(4,0,0,"img/map4/map4_33.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_34.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_35.png");
+$db->table("tile")->addTile(4,1,0,"img/map4/map4_36.png");
+//MAP 4 TILES
