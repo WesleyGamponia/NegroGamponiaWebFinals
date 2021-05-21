@@ -63,6 +63,9 @@ $bg = "\"background-image: url('img/sprite/bg" . $_SESSION['encounterTile'] . ".
     <form action="display.php" method="post">
         <input type="submit" value="Flee" name="Flee">
     </form>
+    <?php
+        echo ($_SESSION['encounterType'])?"Friendly":"Hostile";
+    ?>
     <div class="userstatus">
         <?php
         echo "User Health: " . $_SESSION['encounter']->getUserHP() . "/100<br>";
