@@ -61,6 +61,7 @@ class Movement
                             $_SESSION['currentMap']->setMapID(1);
                             break;
                         case 4:
+                            echo "<form action='finish.php' method='post'>";
                             break;
                     }
                     $_SESSION['movedmap'] = 1;

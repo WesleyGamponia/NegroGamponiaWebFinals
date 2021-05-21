@@ -38,53 +38,71 @@ $bg = "\"background-image: url('img/sprite/bg" . $_SESSION['encounterTile'] . ".
         .encounter {
             width: 900;
             height: 900;
+            
         }
 
         .user {
             width: 300;
             height: 300;
+            float: left;
+            margin-block-start: 580px;
         }
 
         .enemy {
             width: 500;
             height: 500;
+            float: right;
+            margin-block-start: 400px;
         }
 
         img {
             max-width: 100%;
             max-height: 100%;
         }
+
+        .enemy img{
+            object-position: right;
+        }
+
     </style>
 </head>
 
 <body>
 
 
-    <form action="display.php" method="post">
-        <input type="submit" value="Flee" name="Flee">
-    </form>
-    <?php
-        echo ($_SESSION['encounterType'])?"Friendly":"Hostile";
-    ?>
-    <div class="userstatus">
-        <?php
-        echo "User Health: " . $_SESSION['encounter']->getUserHP() . "/100<br>";
-        echo "User Energy: " . $_SESSION['encounter']->getUserMP() . "/50";
+    
+    <div class='mapContainer'>
+        <?PHP
+        echo $_SESSION['encounter']->displayEncounter($bg, $_SESSION['encounterTile'])
         ?>
     </div>
-    <div class="enemystatus">
+    <div class='controls'>
+        
         <?php
-        echo "Enemy Health: " . $_SESSION['encounter']->getEnemyHP() . "/100<br>";
+            echo ($_SESSION['encounterType'])?"Friendly":"Hostile";
         ?>
+        <div class="userstatus">
+            <?php
+            echo "User Health: " . $_SESSION['encounter']->getUserHP() . "/100<br>";
+            echo "User Energy: " . $_SESSION['encounter']->getUserMP() . "/50";
+            ?>
+        </div>
+        <div class="enemystatus">
+            <?php
+            echo "Enemy Health: " . $_SESSION['encounter']->getEnemyHP() . "/100<br>";
+            ?>
+        </div>
+        <form action="display.php" method="post">
+            <input type="submit" class="btn btn-warning" value="Flee" name="Flee">
+        </form>
+        <form action="encounterDisplay.php" method="post">
     </div>
-    <?PHP
-    echo $_SESSION['encounter']->displayEncounter($bg, $_SESSION['encounterTile'])
-    ?>
-    <form action="encounterDisplay.php" method="post">
+    <div class='controls'>
         <div class="card-body">
             <button type="submit" name="action" class="btn btn-outline-primary btn-lg btn-block" value="physical">Physical</button>
             <button <?php if($_SESSION['encounter']->getUserMP()<15){echo "disabled";}?> type="submit" name="action" class="btn btn-outline-success btn-lg btn-block" value="skill">Skill</button>
             <button <?php if($_SESSION['encounter']->getUserMP()<10){echo "disabled";}?> type="submit" name="action" class="btn btn-outline-danger btn-lg btn-block" value="eat">Eat</button>
+    </div>
     </form>
 
 </body>
