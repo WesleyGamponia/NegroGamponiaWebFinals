@@ -6,23 +6,23 @@ class Encounter
     private $userMP = 50;
     private $enemyHP = 100;
     private $echo;
-    public function displayFriendlyEncounter(String $bg, int $encounterTile)
+    public function displayEncounter(String $bg, int $encounterTile)
     {
         $this->echo = "";
-        $this->echo.="<div class='encounter' style=$bg>";
-        $this->echo.="<div class='User'>";
-        $this->echo.="<img src='img/sprite/MC.png'>";
-        $this->echo.="</div>";
-        $this->echo.="<div class='enemy'>";
-        $this->echo.="<img src='img/sprite/villain";
-        $this->echo.=strval($encounterTile);
-        $this->echo.=".png'>";
-        $this->echo.="</div>";
-        $this->echo.="</div>";
+        $this->echo .= "<div class='encounter' style=$bg>";
+        $this->echo .= "<div class='User'>";
+        $this->echo .= "<img src='img/sprite/MC.png'>";
+        $this->echo .= "</div>";
+        $this->echo .= "<div class='enemy'>";
+        $this->echo .= "<img src='img/sprite/villain";
+        $this->echo .= strval($encounterTile);
+        $this->echo .= ".png'>";
+        $this->echo .= "</div>";
+        $this->echo .= "</div>";
 
         return $this->echo;
     }
-    
+
 
 
     public function displayEnemy(int $mapID, int $tileID)
@@ -42,7 +42,7 @@ class Encounter
     {
         return $this->userMP;
     }
-         
+
     public function reduceEnemyHP(int $val)
     {
 
@@ -65,21 +65,35 @@ class Encounter
                 $this->userMP -= 10;
                 break;
         }
-
+        if ($this->enemyHP <= 0) {
+            $_SESSION['win'] = 1;
+            $_SESSION['fleeState'] = 1;
+        }
     }
     public function enemyAction()
     {
-        switch (rand(1,3)) {
+        switch (rand(1, 3)) {
             case 1:
-                $this->userMP -= 10;
+                if ($this->userMP <=10 )
+                    $this->userHP -= 10;
+                else
+                    $this->userMP -= 10;
+
                 break;
             case 2:
-                $this->userHP -= 15;
+                $this->userHP -= 10;
                 break;
             case 3:
                 $this->userHP -= 10;
-                $this->userMP -= 5;
+                if ($this->userMP <= 5)
+                    $this->userHP -= 5;
+                else
+                    $this->userMP -= 5;
                 break;
+        }
+        if ($this->userHP <= 0) {
+            $_SESSION['win'] = 0;
+            $_SESSION['fleeState'] = 1;
         }
     }
 }

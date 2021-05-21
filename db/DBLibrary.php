@@ -189,9 +189,11 @@ class DBLibrary implements IDBFunctions{
         
         $this->sql = "UPDATE $this->table SET ";
         for($i=0;$i<=count($fieldList)-1;$i++){
-            $this->sql .= "$fieldList[$i]='$valueList[$i]',";
+            $this->sql .= "$fieldList[$i]='$valueList[$i]'";
+            if($i<count($fieldList)-1)
+             $this->sql .= ",";
         }
-        $this->sql .= "$fieldList[1]='$valueList[1]' ";
+        
         $dbStatement = $this->db->prepare($this->sql);
         $dbStatement->execute();
         return $this;

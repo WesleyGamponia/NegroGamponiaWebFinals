@@ -8,8 +8,9 @@ session_start();
 $db = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 $db2 = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 $db3 = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
+$db4 = new DBLibrary("mysql:host=127.0.0.1;dbname=mapDB", "root", "");
 
-$_SESSION['encounterTile']=15;
+$_SESSION['encounterTile'] = 15;
 $_SESSION['currentSave'] = 1;
 if (!isset($_SESSION['fleeState']))
     $_SESSION['fleeState'] = 0;
@@ -25,12 +26,35 @@ if (isset(($_POST['nextback']))) {
         $_SESSION['currentMap']->setMapID(-1);
     }
 }
-if(isset($_POST['Flee']))
-    $_SESSION['fleeState'] = 1;
-$location = $db2->select()->from('save')->where('saveID', '=', $_SESSION['currentSave'])->get();
+if ($_SESSION['win'] == 0 && $_SESSION['encounterType'] == 1) {
+    $fieldList = ["lives"];
+    $valueList = [$_SESSION['location']['lives'] - 1];
+    $db4->table('save')->update($fieldList, $valueList)->where("saveID", "=", $_SESSION['currentSave'])->getAll();
+}
 
-$_SESSION['player']->setMapID($location['mapID']);
-$_SESSION['player']->setTileID($location['tileID']);
+if ($_SESSION['win'] == 1) {
+    $fieldList = ["money"];
+    $reward = $_SESSION['encounterType'] ? 100 : 150;
+    $valueList = [$_SESSION['location']['money'] + $reward];
+    $db4->table('save')->update($fieldList, $valueList)->where("saveID", "=", $_SESSION['currentSave'])->getAll();
+}
+if (isset($_SESSION['movedmap'])) {
+    if ($_SESSION['movedmap'] == 1) {
+        $fieldList = ["money", "lives"];
+        $valueList = [$_SESSION['location']['money'] - 300, 5];
+        $db4->table('save')->update($fieldList, $valueList)->where("saveID", "=", $_SESSION['currentSave'])->getAll();
+        $_SESSION['movedmap'] = 0;
+    }
+}
+if (isset($_POST['Flee']))
+    $_SESSION['fleeState'] = 1;
+
+
+$_SESSION['location'] = $db2->select()->from('save')->where('saveID', '=', $_SESSION['currentSave'])->get();
+
+$_SESSION['win'] = 2;
+$_SESSION['player']->setMapID($_SESSION['location']['mapID']);
+$_SESSION['player']->setTileID($_SESSION['location']['tileID']);
 if (isset(($_POST['movement']))) {
     $_SESSION['player']->move($_POST['movement'], $_SESSION['tiles']);
     $fieldList = ["tileID", "mapID"];
@@ -70,13 +94,14 @@ if (isset(($_POST['movement']))) {
         <?php
 
         $_SESSION['tiles'] = $db->select()->from('tile')->where('mapID', '=', $_SESSION['currentMap']->getMapID())->getAll();
-        
+
         echo $_SESSION['currentMap']->displayMap($_SESSION['tiles'], $_SESSION['player']->getTileID());
         ?>
     </div>
     <div>
         <?php
-            echo "Lives: ".$location['lives'];
+        echo "Lives: " . $_SESSION['location']['lives'];
+        echo "<br>Money: " . $_SESSION['location']['money'];
         ?>
     </div>
     <div class='controls'>

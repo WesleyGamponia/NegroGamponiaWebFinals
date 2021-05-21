@@ -19,7 +19,9 @@ class Maps
             $this->echo .= "'>";
             if ($tile['tileID'] == $tileID) {
                 if ($tile['encounter'] == 1 && $_SESSION['fleeState'] == 0) {
+                    
                     $_SESSION['encounterTile']=$tileID;
+                    $_SESSION['encounterType']=rand(0,1);
                     $_SESSION['encounter'] = new Encounter();
                     header("Location:http://localhost:8000/NegroGamponiaWebFinals/encounterDisplay.php");
                 }

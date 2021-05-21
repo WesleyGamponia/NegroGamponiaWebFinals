@@ -1,8 +1,10 @@
 <?php
 require_once  'class/encounter.php';
 session_start();
-$_SESSION['win']=false;
 
+if($_SESSION['win']==0||$_SESSION['win']==1){
+    header("Location:http://localhost:8000/NegroGamponiaWebFinals/display.php");
+}
 if (isset($_POST['action'])) {
     $_SESSION['encounter']->userAction($_POST['action']); 
     $_SESSION['encounter']->enemyAction(); 
@@ -73,7 +75,7 @@ $bg = "\"background-image: url('img/sprite/bg" . $_SESSION['encounterTile'] . ".
         ?>
     </div>
     <?PHP
-    echo $_SESSION['encounter']->displayFriendlyEncounter($bg, $_SESSION['encounterTile'])
+    echo $_SESSION['encounter']->displayEncounter($bg, $_SESSION['encounterTile'])
     ?>
     <form action="encounterDisplay.php" method="post">
         <div class="card-body">
