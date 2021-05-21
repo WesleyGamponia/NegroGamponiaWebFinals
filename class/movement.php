@@ -62,13 +62,13 @@ class Movement
                             break;
                         case 4:
                             break;
-                           
                     }
-                    $_SESSION['movedmap']=1;
+                    $_SESSION['movedmap'] = 1;
                 }
                 break;
         }
     }
+  
     public function setMapID(int $mapID)
     {
         $this->mapID = $mapID;

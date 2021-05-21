@@ -51,7 +51,12 @@ if (isset($_POST['Flee']))
 
 
 $_SESSION['location'] = $db2->select()->from('save')->where('saveID', '=', $_SESSION['currentSave'])->get();
-
+if ($_SESSION['location']['lives'] == 0) {
+    $fieldList = ["money", "lives"];
+    $valueList = [0, 5];
+    $db3->table('save')->update($fieldList, $valueList)->where("saveID", "=", $_SESSION['currentSave'])->getAll();
+    header("Location:http://localhost:8000/NegroGamponiaWebFinals/display.php");
+}
 $_SESSION['win'] = 2;
 $_SESSION['player']->setMapID($_SESSION['location']['mapID']);
 $_SESSION['player']->setTileID($_SESSION['location']['tileID']);

@@ -68,6 +68,8 @@ class Encounter
         if ($this->enemyHP <= 0) {
             $_SESSION['win'] = 1;
             $_SESSION['fleeState'] = 1;
+            header("Location:http://localhost:8000/NegroGamponiaWebFinals/display.php");
+
         }
     }
     public function enemyAction()
@@ -81,12 +83,12 @@ class Encounter
 
                 break;
             case 2:
-                $this->userHP -= 10;
+                $this->userHP -= 15;
                 break;
             case 3:
                 $this->userHP -= 10;
                 if ($this->userMP <= 5)
-                    $this->userHP -= 5;
+                    $this->userHP -= 10;
                 else
                     $this->userMP -= 5;
                 break;
@@ -94,6 +96,7 @@ class Encounter
         if ($this->userHP <= 0) {
             $_SESSION['win'] = 0;
             $_SESSION['fleeState'] = 1;
+            header("Location:http://localhost:8000/NegroGamponiaWebFinals/display.php");
         }
     }
 }
