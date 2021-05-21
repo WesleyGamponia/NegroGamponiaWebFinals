@@ -22,6 +22,6 @@ create table `save`(
     lives int
 );
 drop table save;
-insert into save (mapID,tileID,money)values(1,1,0);
+insert into save (mapID,tileID,money,lives)values(1,1,0,5);
 select * from save;
 select * from tile;
